@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'widget_button_osx.dart';
+import 'vnt_button.dart';
 
 class LayoutDesktop extends StatefulWidget {
   const LayoutDesktop({super.key, required this.title});
@@ -46,8 +46,8 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
             ),
             Padding(
               padding: const EdgeInsets.all(20),
-              child: ButtonOSX(
-                style: ButtonStyleOSX.action,
+              child: VNTButton(
+                style: VNTButtonStyle.action,
                 isLarge: false,
                 onPressed: _incrementCounter,
                 child: const Text('Increment'),

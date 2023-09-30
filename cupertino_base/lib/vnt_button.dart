@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-enum ButtonStyleOSX { action, normal, destructive }
+enum VNTButtonStyle { action, normal, destructive }
 
-class ButtonOSX extends StatefulWidget {
+class VNTButton extends StatefulWidget {
   final VoidCallback onPressed;
   final Widget child;
-  final ButtonStyleOSX style;
+  final VNTButtonStyle style;
   final bool isLarge;
 
-  const ButtonOSX({
+  const VNTButton({
     Key? key,
     required this.onPressed,
     required this.child,
-    this.style = ButtonStyleOSX.normal, // per defecte
+    this.style = VNTButtonStyle.normal, // per defecte
     this.isLarge = false, // per defecte
   }) : super(key: key);
 
   @override
-  _ButtonOSXState createState() => _ButtonOSXState();
+  _VNTButtonState createState() => _VNTButtonState();
 }
 
-class _ButtonOSXState extends State<ButtonOSX> {
+class _VNTButtonState extends State<VNTButton> {
   static const double _fontSize = 12.0;
   bool _isPressed = false;
 
@@ -30,7 +30,7 @@ class _ButtonOSXState extends State<ButtonOSX> {
     TextStyle textStyle;
 
     switch (widget.style) {
-      case ButtonStyleOSX.action:
+      case VNTButtonStyle.action:
         decoration = BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -54,7 +54,7 @@ class _ButtonOSXState extends State<ButtonOSX> {
         );
         break;
 
-      case ButtonStyleOSX.destructive:
+      case VNTButtonStyle.destructive:
         decoration = BoxDecoration(
           color: _isPressed ? Colors.grey.shade200 : Colors.white,
           border: Border.all(color: Colors.grey.shade300),
