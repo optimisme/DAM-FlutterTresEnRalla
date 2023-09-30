@@ -6,7 +6,6 @@ import 'app_data.dart';
 import 'app.dart';
 
 void main() async {
-
   // For Linux, macOS and Windows, initialize WindowManager
   try {
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
@@ -29,7 +28,7 @@ void main() async {
 }
 
 // Show the window when it's ready
-void showWindow (_) async {
-    windowManager.setMinimumSize(const Size(300.0, 600.0));
-    await windowManager.setTitle('App');
+void showWindow(_) async {
+  windowManager.setMinimumSize(const Size(300.0, 600.0));
+  await windowManager.setTitle('App');
 }

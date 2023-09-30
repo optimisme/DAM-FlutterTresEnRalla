@@ -10,7 +10,6 @@ class LayoutMobile extends StatefulWidget {
 }
 
 class _LayoutMobileState extends State<LayoutMobile> {
-
   int _counter = 0;
 
   void _decrementCounter() {
@@ -33,11 +32,11 @@ class _LayoutMobileState extends State<LayoutMobile> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                    Flexible(
-                        child: const Text(
-                            'Click on decrement to decrease the counter: ',
-                        ),
+                  Flexible(
+                    child: const Text(
+                      'Click on decrement to decrease the counter: ',
                     ),
+                  ),
                   // Add text with the counter
                   Text(
                     ' $_counter',
