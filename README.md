@@ -4,7 +4,7 @@ This project is a starting point for a Flutter application with a Cupertino look
 
 ## Getting Started
 
-Get dependencies and rename the project with:
+Get dependencies and rename the project to any "new_project_name" with:
 
 ``` bash
 cd cupertino_base
