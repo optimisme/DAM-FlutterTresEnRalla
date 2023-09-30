@@ -12,4 +12,6 @@ flutter pub get
 flutter create --project-name new_project_name .
 cd ..
 cd mv cupertino_base new_project_name
+cd new_project_name
+flutter run
 ```
