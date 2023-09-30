@@ -17,10 +17,10 @@ class VNTButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _VNTButtonState createState() => _VNTButtonState();
+  VNTButtonState createState() => VNTButtonState();
 }
 
-class _VNTButtonState extends State<VNTButton> {
+class VNTButtonState extends State<VNTButton> {
   static const double _fontSize = 12.0;
   bool _isPressed = false;
 
