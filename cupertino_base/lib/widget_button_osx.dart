@@ -17,10 +17,11 @@ class ButtonOSX extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  ButtonOSXState createState() => ButtonOSXState();
+  _ButtonOSXState createState() => _ButtonOSXState();
 }
 
-class ButtonOSXState extends State<ButtonOSX> {
+class _ButtonOSXState extends State<ButtonOSX> {
+  static const double _fontSize = 12.0;
   bool _isPressed = false;
 
   @override
@@ -46,7 +47,7 @@ class ButtonOSXState extends State<ButtonOSX> {
           borderRadius: BorderRadius.circular(8.0),
         );
         textStyle = TextStyle(
-          fontSize: 14,
+          fontSize: _fontSize,
           color: _isPressed
               ? const Color.fromARGB(255, 175, 211, 255)
               : Colors.white,
@@ -60,7 +61,7 @@ class ButtonOSXState extends State<ButtonOSX> {
           borderRadius: BorderRadius.circular(8.0),
         );
         textStyle = const TextStyle(
-          fontSize: 14,
+          fontSize: _fontSize,
           color: Colors.red,
         );
         break;
@@ -72,7 +73,7 @@ class ButtonOSXState extends State<ButtonOSX> {
           borderRadius: BorderRadius.circular(8.0),
         );
         textStyle = const TextStyle(
-          fontSize: 14,
+          fontSize: _fontSize,
           color: Colors.black,
         );
     }
@@ -85,7 +86,9 @@ class ButtonOSXState extends State<ButtonOSX> {
       child: DecoratedBox(
         decoration: decoration,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          padding: widget.isLarge
+              ? const EdgeInsets.fromLTRB(8, 8, 8, 10)
+              : const EdgeInsets.fromLTRB(8, 4, 8, 6),
           child: DefaultTextStyle(
             style: textStyle,
             child: widget.isLarge

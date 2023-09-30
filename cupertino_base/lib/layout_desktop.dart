@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:nintendo_db/widget_button_osx.dart';
+import 'widget_button_osx.dart';
 
 class LayoutDesktop extends StatefulWidget {
   const LayoutDesktop({super.key, required this.title});
