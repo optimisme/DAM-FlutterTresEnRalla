@@ -28,22 +28,22 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
       ),
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
             Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'You have pushed the button this many times:',
-                  ),
-                  // Add text with the counter
-                  Text(
-                    ' $_counter',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ],
-              ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                    const Text(
+                        'You have pushed the button this many times:',
+                    ),
+                    // Add text with the counter
+                    Text(
+                        ' $_counter',
+                        style: TextStyle(fontSize: 20),
+                    ),
+                    ],
+                ),
             ),
             Padding(
                 padding: const EdgeInsets.all(20),
@@ -73,7 +73,6 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
                     ),
                 ),
             )
-
           ],
         ),
       ),
