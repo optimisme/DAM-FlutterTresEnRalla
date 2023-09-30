@@ -26,7 +26,7 @@ class AppState extends State<App> {
   // Definir el contingut del widget 'App'
   @override
   Widget build(BuildContext context) {
-    // Farem servir la base 'Material'
+    // Farem servir la base 'Cupertino'
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
       theme: CupertinoThemeData(brightness: Brightness.light),
