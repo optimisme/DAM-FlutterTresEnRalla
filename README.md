@@ -9,7 +9,7 @@ Get dependencies and rename the project with:
 ``` bash
 cd cupertino_base
 flutter pub get
-flutter create --project-name <project_name> .
+flutter create --project-name <new_project_name> .
 cd ..
-cd mv cupertino_base <project_name>
+cd mv cupertino_base <new_project_name>
 ```
