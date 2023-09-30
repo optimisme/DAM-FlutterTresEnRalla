@@ -2,16 +2,27 @@
 
 This project is a starting point for a Flutter application with a Cupertino look and feel.
 
-## Getting Started
+## Getting Started, clone and create a project
 
-Rename the project and run with:
+For example to create a new GitHub project named FT04-Stacks
+
+With a Flutter project named 'stacks'
 
 ``` bash
-cd cupertino_base
-flutter create --project-name new_project_name .
-cd ..
-cd mv cupertino_base new_project_name
-cd new_project_name
+git clone https://github.com/optimisme/DAM-FlutterCupertinoBase
+mv DAM-FlutterCupertinoBase FT04-Stacks
+cd FT04-Stacks
+mv cupertino_base stacks
+git remote set-url origin https://github.com/GITHUB-USERNAME/FT04-Stacks.git
+git push -u origin main
+
+```
+
+## Download and install dependencies
+
+``` bash
+cd stacks
+flutter create --project-name stacks .
 flutter pub get
 flutter run
 ```
