@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class LayoutDesktop extends StatefulWidget {
   const LayoutDesktop({super.key, required this.title});
@@ -45,17 +46,34 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
-              child: CupertinoButton.filled(
-                minSize: 0,
-                onPressed: _incrementCounter,
-                padding: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 6),
-                child: const Text(
-                    'Increment',
-                    style: TextStyle(fontSize: 12)
+                padding: const EdgeInsets.all(20),
+                child: Container( // macOS style button
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                            Color.fromARGB(255,  35, 134, 255),
+                            Color.fromARGB(255,   0, 111, 254),
+                            ],
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: CupertinoButton(
+                        minSize: 0,
+                        onPressed: _incrementCounter,
+                        padding: EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 6),
+                        child: const Text(
+                            'Increment',
+                            style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white, // Color del text
+                            ),
+                        ),
+                    ),
                 ),
-              ),
-            ),
+            )
+
           ],
         ),
       ),
