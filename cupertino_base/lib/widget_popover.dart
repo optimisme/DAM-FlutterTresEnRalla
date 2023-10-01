@@ -55,7 +55,7 @@ class WidgetPopover extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _WidgetPopoverState createState() => _WidgetPopoverState();
+  WidgetPopoverState createState() => WidgetPopoverState();
 
   static void showPopover({
     required BuildContext context,
@@ -73,9 +73,10 @@ class WidgetPopover extends StatefulWidget {
 
     overlayEntry = OverlayEntry(
       builder: (BuildContext context) => WidgetPopover(
-          anchor: anchorPosition + Offset(0.0, anchorSize.height),
-          child: child,
-          anchorWidth: anchorSize.width),
+        anchor: anchorPosition + Offset(0.0, anchorSize.height),
+        anchorWidth: anchorSize.width,
+        child: child,
+      ),
     );
 
     _currentOverlayEntry = overlayEntry;
@@ -89,7 +90,7 @@ class WidgetPopover extends StatefulWidget {
   }
 }
 
-class _WidgetPopoverState extends State<WidgetPopover> {
+class WidgetPopoverState extends State<WidgetPopover> {
   double? width;
   double? height;
   bool isSizeDetermined = false;
@@ -99,7 +100,7 @@ class _WidgetPopoverState extends State<WidgetPopover> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (childKey.currentContext != null) {
         final RenderBox childRenderBox =
             childKey.currentContext!.findRenderObject() as RenderBox;
@@ -117,7 +118,7 @@ class _WidgetPopoverState extends State<WidgetPopover> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final screenPadding = 10.0;
+    const screenPadding = 10.0;
 
     double leftPosition, topPosition;
 
