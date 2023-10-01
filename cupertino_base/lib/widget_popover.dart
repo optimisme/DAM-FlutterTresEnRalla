@@ -32,7 +32,7 @@ import 'package:flutter/material.dart';
             ),
           ));
     },
-    child: Icon(
+    child: const Icon(
       CupertinoIcons.settings,
       color: CupertinoColors.black,
       size: 24.0,
