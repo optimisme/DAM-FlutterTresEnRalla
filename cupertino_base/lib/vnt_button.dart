@@ -31,13 +31,13 @@ class VNTButtonState extends State<VNTButton> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     // Registra l'observer
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     // Cancel·la el registre de l'observer
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
