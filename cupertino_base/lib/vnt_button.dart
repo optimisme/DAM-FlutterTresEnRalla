@@ -37,11 +37,11 @@ class VNTButtonState extends State<VNTButton> {
             end: Alignment.bottomCenter,
             colors: [
               _isPressed
-                  ? const Color.fromARGB(255, 25, 124, 245)
-                  : const Color.fromARGB(255, 35, 134, 255),
+                  ? const Color.fromRGBO(25, 124, 245, 1)
+                  : const Color.fromRGBO(35, 134, 255, 1),
               _isPressed
-                  ? const Color.fromARGB(255, 0, 98, 236)
-                  : const Color.fromARGB(255, 0, 111, 254),
+                  ? const Color.fromRGBO(0, 98, 236, 1)
+                  : const Color.fromRGBO(0, 111, 254, 1),
             ],
           ),
           borderRadius: BorderRadius.circular(8.0),
@@ -49,7 +49,7 @@ class VNTButtonState extends State<VNTButton> {
         textStyle = TextStyle(
           fontSize: _fontSize,
           color: _isPressed
-              ? const Color.fromARGB(255, 175, 211, 255)
+              ? const Color.fromRGBO(175, 211, 255, 1)
               : Colors.white,
         );
         break;
