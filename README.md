@@ -18,6 +18,8 @@ git push -u origin main
 
 ```
 
+Ensure that 'pubspec.yaml' contains the correct project name
+
 ## Download and install dependencies
 
 ``` bash
