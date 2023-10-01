@@ -20,9 +20,45 @@ class VNTButton extends StatefulWidget {
   VNTButtonState createState() => VNTButtonState();
 }
 
-class VNTButtonState extends State<VNTButton> {
+class VNTButtonState extends State<VNTButton> with WidgetsBindingObserver {
   static const double _fontSize = 12.0;
   bool _isPressed = false;
+  bool _hasAppFocus = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Registra l'observer
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    // Cancel·la el registre de l'observer
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.resumed:
+        setState(() {
+          _hasAppFocus = true;
+        });
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+        setState(() {
+          _hasAppFocus = false;
+        });
+        break;
+      case AppLifecycleState.hidden:
+      // TODO: Handle this case.
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,27 +67,39 @@ class VNTButtonState extends State<VNTButton> {
 
     switch (widget.style) {
       case VNTButtonStyle.action:
-        decoration = BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              _isPressed
-                  ? const Color.fromRGBO(25, 124, 245, 1)
-                  : const Color.fromRGBO(35, 134, 255, 1),
-              _isPressed
-                  ? const Color.fromRGBO(0, 98, 236, 1)
-                  : const Color.fromRGBO(0, 111, 254, 1),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(8.0),
-        );
-        textStyle = TextStyle(
-          fontSize: _fontSize,
-          color: _isPressed
-              ? const Color.fromRGBO(175, 211, 255, 1)
-              : Colors.white,
-        );
+        if (_hasAppFocus) {
+          decoration = BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                _isPressed
+                    ? const Color.fromRGBO(25, 124, 245, 1)
+                    : const Color.fromRGBO(35, 134, 255, 1),
+                _isPressed
+                    ? const Color.fromRGBO(0, 98, 236, 1)
+                    : const Color.fromRGBO(0, 111, 254, 1),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(8.0),
+          );
+          textStyle = TextStyle(
+            fontSize: _fontSize,
+            color: _isPressed
+                ? const Color.fromRGBO(175, 211, 255, 1)
+                : Colors.white,
+          );
+        } else {
+          decoration = BoxDecoration(
+            color: _isPressed ? Colors.grey.shade200 : Colors.white,
+            border: Border.all(color: Colors.grey.shade300),
+            borderRadius: BorderRadius.circular(8.0),
+          );
+          textStyle = const TextStyle(
+            fontSize: _fontSize,
+            color: Colors.black,
+          );
+        }
         break;
 
       case VNTButtonStyle.destructive:
