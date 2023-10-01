@@ -49,6 +49,7 @@ class _LayoutDesktopState extends State<LayoutDesktop> {
               child: VNTButton(
                 style: VNTButtonStyle.action,
                 isLarge: false,
+                isDisabled: false,
                 onPressed: _incrementCounter,
                 child: const Text('Increment'),
               ),
