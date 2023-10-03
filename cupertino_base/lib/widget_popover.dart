@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /*
   Exemple de com usar 'WidgetPopover'
 
-  Primer cal crear una key amb:
+  Primer cal crear una key amb les variables de la classe '...state'
 
   GlobalKey _settingsButtonKey = GlobalKey();
 
