@@ -7,6 +7,13 @@ import 'package:flutter/material.dart';
 
   GlobalKey _settingsButtonKey = GlobalKey();
 
+  Cal posar aquesta key al botó que obrirà el Popover:
+
+  IconButton( 
+    key: _settingsButtonKey, 
+    icon: Icon(Icons.settings), 
+    onPressed: () { ...
+
   Després es pot fer servir el widget:
 
   CupertinoButton(
