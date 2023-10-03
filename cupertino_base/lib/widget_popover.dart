@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 /*
   Exemple de com usar 'WidgetPopover'
 
+  Primer cal crear una key amb:
+
+  GlobalKey _settingsButtonKey = GlobalKey();
+
+  Després es pot fer servir el widget:
+
   CupertinoButton(
     key: _settingsButtonKey,
     padding: const EdgeInsets.all(0.0),
