@@ -43,7 +43,6 @@ class WidgetSidebarsState extends State<WidgetSidebars> {
         // Left Sidebar
         Container(
           color: Color.fromRGBO(234, 228, 226, 1),
-          width: width,
           child: widget.left,
         ),
         // Contingut Principal (central)
