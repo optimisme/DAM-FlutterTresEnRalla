@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart'; // per a 'CustomPainter'
 import 'app_data.dart';
 
@@ -33,11 +34,41 @@ class WidgetTresRatllaPainter extends CustomPainter {
         Offset(size.width, secondHorizontal), paint);
   }
 
-  void drawBoardStatus(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 5.0;
+  void drawImage(Canvas canvas, ui.Image image, x0, y0, x1, y1) {
+    final srcRect =
+        Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble());
+    final dstRect = Rect.fromPoints(Offset(x0, y0), Offset(x1, y1));
+    canvas.drawImageRect(image, srcRect, dstRect, Paint());
+  }
 
+  void drawCross(Canvas canvas, double x0, double y0, double x1, double y1,
+      Color color, double strokeWidth) {
+    Paint paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth;
+
+    canvas.drawLine(
+      Offset(x0, y0),
+      Offset(x1, y1),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(x1, y0),
+      Offset(x0, y1),
+      paint,
+    );
+  }
+
+  void drawCircle(Canvas canvas, double x, double y, double radius, Color color,
+      double strokeWidth) {
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = color
+      ..strokeWidth = strokeWidth;
+    canvas.drawCircle(Offset(x, y), radius, paint);
+  }
+
+  void drawBoardStatus(Canvas canvas, Size size) {
     // Dibuixar 'X' i 'O' del tauler
     double cellWidth = size.width / 3;
     double cellHeight = size.height / 3;
@@ -58,17 +89,14 @@ class WidgetTresRatllaPainter extends CustomPainter {
               color = Colors.grey;
               break;
           }
-          paint.color = color;
-          canvas.drawLine(
-            Offset(j * cellWidth, i * cellHeight),
-            Offset((j + 1) * cellWidth, (i + 1) * cellHeight),
-            paint,
-          );
-          canvas.drawLine(
-            Offset((j + 1) * cellWidth, i * cellHeight),
-            Offset(j * cellWidth, (i + 1) * cellHeight),
-            paint,
-          );
+
+          double x0 = j * cellWidth;
+          double y0 = i * cellHeight;
+          double x1 = (j + 1) * cellWidth;
+          double y1 = (i + 1) * cellHeight;
+
+          drawImage(canvas, appData.imagePlayer!, x0, y0, x1, y1);
+          drawCross(canvas, x0, y0, x1, y1, color, 3.0);
         } else if (appData.board[i][j] == 'O') {
           // Dibuixar una O amb el color de l'oponent
           Color color = Colors.blue;
@@ -83,18 +111,17 @@ class WidgetTresRatllaPainter extends CustomPainter {
               color = Colors.brown;
               break;
           }
-          paint.color = color;
-          double minDimension = min(cellWidth, cellHeight);
-          double circleRadius = minDimension / 2;
 
-          double centerX = j * cellWidth + cellWidth / 2;
-          double centerY = i * cellHeight + cellHeight / 2;
+          double x0 = j * cellWidth;
+          double y0 = i * cellHeight;
+          double x1 = (j + 1) * cellWidth;
+          double y1 = (i + 1) * cellHeight;
+          double cX = x0 + (x1 - x0) / 2;
+          double cY = y0 + (y1 - y0) / 2;
+          double radius = (min(cellWidth, cellHeight) / 2) - 5;
 
-          canvas.drawCircle(
-            Offset(centerX, centerY),
-            circleRadius,
-            paint,
-          );
+          drawImage(canvas, appData.imageOpponent!, x0, y0, x1, y1);
+          drawCircle(canvas, cX, cY, radius, color, 3.0);
         }
       }
     }

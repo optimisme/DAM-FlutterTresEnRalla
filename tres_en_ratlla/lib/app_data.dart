@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class AppData with ChangeNotifier {
@@ -8,6 +10,10 @@ class AppData with ChangeNotifier {
   List<List<String>> board = [];
   bool gameIsOver = false;
   String gameWinner = '-';
+
+  ui.Image? imagePlayer;
+  ui.Image? imageOpponent;
+  bool imagesReady = false;
 
   void resetGame() {
     board = [
@@ -87,5 +93,42 @@ class AppData with ChangeNotifier {
     }
 
     gameWinner = '-';
+  }
+
+  Future<void> loadImages(BuildContext context) async {
+    // Si ja estàn carregades, no cal fer res
+    if (imagesReady) {
+      notifyListeners();
+      return;
+    }
+
+    // Força simular un loading
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    Image tmpPlayer = Image.asset('assets/images/player.png');
+    Image tmpOpponent = Image.asset('assets/images/opponent.png');
+
+    // Carrega les imatges
+    if (context.mounted) {
+      imagePlayer = await convertWidgetToUiImage(tmpPlayer);
+    }
+    if (context.mounted) {
+      imageOpponent = await convertWidgetToUiImage(tmpOpponent);
+    }
+
+    imagesReady = true;
+
+    // Notifica als escoltadors que les imatges estan carregades
+    notifyListeners();
+  }
+
+  Future<ui.Image> convertWidgetToUiImage(Image image) async {
+    final completer = Completer<ui.Image>();
+    image.image.resolve(const ImageConfiguration()).addListener(
+          ImageStreamListener(
+            (info, _) => completer.complete(info.image),
+          ),
+        );
+    return completer.future;
   }
 }

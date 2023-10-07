@@ -21,7 +21,7 @@ class LayoutPlayState extends State<LayoutPlay> {
           },
         ),
       ),
-      child: SafeArea(
+      child: const SafeArea(
         child: WidgetTresRatlla(),
       ),
     );
