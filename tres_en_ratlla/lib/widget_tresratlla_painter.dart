@@ -2,10 +2,10 @@ import 'dart:math';
 import 'package:flutter/material.dart'; // per a 'CustomPainter'
 import 'app_data.dart';
 
-class CanvasPainter extends CustomPainter {
+class WidgetTresRatllaPainter extends CustomPainter {
   final AppData appData;
 
-  CanvasPainter(this.appData);
+  WidgetTresRatllaPainter(this.appData);
 
   void drawBoardLines(Canvas canvas, Size size) {
     final paint = Paint()
