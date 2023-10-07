@@ -17,7 +17,7 @@ class WidgetTresRatllaState extends State<WidgetTresRatlla> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       AppData appData = Provider.of<AppData>(context, listen: false);
       _loadImagesFuture = appData.loadImages(context);
     });
@@ -73,7 +73,6 @@ class WidgetTresRatllaState extends State<WidgetTresRatlla> {
                   ),
                 ),
               );
-              ;
             }
           },
         ),
