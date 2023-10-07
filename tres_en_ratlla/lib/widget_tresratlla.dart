@@ -13,6 +13,7 @@ class WidgetTresRatlla extends StatefulWidget {
 class WidgetTresRatllaState extends State<WidgetTresRatlla> {
   Future<void>? _loadImagesFuture;
 
+  // Al iniciar el widget, carrega les imatges
   @override
   void initState() {
     super.initState();
@@ -43,6 +44,7 @@ class WidgetTresRatllaState extends State<WidgetTresRatlla> {
         height: MediaQuery.of(context).size.height -
             56.0, // Ocupa tota l'altura disponible menys l'altura de l'AppBar
         child: FutureBuilder(
+          // Segons si les imatges estan disponibles mostra un progrés o el joc
           future: _loadImagesFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState != ConnectionState.done) {
