@@ -19,8 +19,8 @@ class AppState extends State<App> {
     // Farem servir la base 'Cupertino'
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
-      theme: CupertinoThemeData(brightness: Brightness.light),
-      home: LayoutIntro(),
+      theme: const CupertinoThemeData(brightness: Brightness.light),
+      home: const LayoutIntro(),
       routes: {
         'intro': (context) => const LayoutIntro(),
         'settings': (context) => const LayoutSettings(),
