@@ -34,10 +34,32 @@ class WidgetTresRatllaPainter extends CustomPainter {
         Offset(size.width, secondHorizontal), paint);
   }
 
-  void drawImage(Canvas canvas, ui.Image image, x0, y0, x1, y1) {
+  void drawImage(Canvas canvas, ui.Image image, double x0, double y0, double x1,
+      double y1) {
+    double dstWidth = x1 - x0;
+    double dstHeight = y1 - y0;
+
+    double imageAspectRatio = image.width / image.height;
+    double dstAspectRatio = dstWidth / dstHeight;
+
+    double finalWidth;
+    double finalHeight;
+
+    if (imageAspectRatio > dstAspectRatio) {
+      finalWidth = dstWidth;
+      finalHeight = dstWidth / imageAspectRatio;
+    } else {
+      finalHeight = dstHeight;
+      finalWidth = dstHeight * imageAspectRatio;
+    }
+
+    double offsetX = x0 + (dstWidth - finalWidth) / 2;
+    double offsetY = y0 + (dstHeight - finalHeight) / 2;
+
     final srcRect =
         Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble());
-    final dstRect = Rect.fromPoints(Offset(x0, y0), Offset(x1, y1));
+    final dstRect = Rect.fromLTWH(offsetX, offsetY, finalWidth, finalHeight);
+
     canvas.drawImageRect(image, srcRect, dstRect, Paint());
   }
 
@@ -96,7 +118,7 @@ class WidgetTresRatllaPainter extends CustomPainter {
           double y1 = (i + 1) * cellHeight;
 
           drawImage(canvas, appData.imagePlayer!, x0, y0, x1, y1);
-          drawCross(canvas, x0, y0, x1, y1, color, 3.0);
+          drawCross(canvas, x0, y0, x1, y1, color, 5.0);
         } else if (appData.board[i][j] == 'O') {
           // Dibuixar una O amb el color de l'oponent
           Color color = Colors.blue;
@@ -121,7 +143,7 @@ class WidgetTresRatllaPainter extends CustomPainter {
           double radius = (min(cellWidth, cellHeight) / 2) - 5;
 
           drawImage(canvas, appData.imageOpponent!, x0, y0, x1, y1);
-          drawCircle(canvas, cX, cY, radius, color, 3.0);
+          drawCircle(canvas, cX, cY, radius, color, 5.0);
         }
       }
     }
