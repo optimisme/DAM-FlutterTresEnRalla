@@ -20,6 +20,14 @@ class LayoutSettingsState extends State<LayoutSettings> {
         ? "Selecciona el color del jugador"
         : "Selecciona el color de l'oponent";
 
+    // Troba l'índex de la opció actual a la llista d'opcions
+    AppData appData = Provider.of<AppData>(context, listen: false);
+    String currentValue =
+        type == "player" ? appData.colorPlayer : appData.colorOpponent;
+    int currentIndex = options.indexOf(currentValue);
+    FixedExtentScrollController scrollController =
+        FixedExtentScrollController(initialItem: currentIndex);
+
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => Container(
@@ -46,9 +54,8 @@ class LayoutSettingsState extends State<LayoutSettings> {
                 top: false,
                 child: CupertinoPicker(
                   itemExtent: 32.0,
+                  scrollController: scrollController,
                   onSelectedItemChanged: (index) {
-                    AppData appData =
-                        Provider.of<AppData>(context, listen: false);
                     if (type == "player") {
                       appData.colorPlayer = options[index];
                     } else {
