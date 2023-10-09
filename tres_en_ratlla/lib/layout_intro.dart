@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'app_data.dart';
 
@@ -33,7 +32,7 @@ class LayoutIntroState extends State<LayoutIntro> {
               child: Center(
             child: Padding(
               padding: EdgeInsets.all(20),
-              child: Icon(FontAwesomeIcons.gamepad, size: 100.0),
+              child: Icon(CupertinoIcons.game_controller, size: 100.0),
             ),
           )),
           Padding(
