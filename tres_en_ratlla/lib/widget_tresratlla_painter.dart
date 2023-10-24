@@ -197,7 +197,7 @@ class WidgetTresRatllaPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     drawBoardLines(canvas, size);
     drawBoardStatus(canvas, size);
-    if (appData.gameWinner != '-') {
+    if (appData.gameIsOver) {
       drawGameOver(canvas, size);
     }
   }
